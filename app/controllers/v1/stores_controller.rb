@@ -8,7 +8,13 @@ class V1::StoresController < ApplicationController
     end
 
     def create
-        @store = 
+        @store = Store.new(store_params)
+
+        if @store.create
+            render json: { message: "Store created", httpCode: 201, result: @store }, status: :created
+        else 
+            render json: { message: "INTERNAL_SERVER_ERROR", httpCode: 500, result: @store }, status: :internal_server_error
+        end
     end
 
     private def store_params
