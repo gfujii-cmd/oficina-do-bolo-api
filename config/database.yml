@@ -23,7 +23,11 @@ default: &default
 
 development:
   <<: *default
-  database: cake_api_development
+  database: cake_dev
+  host: localhost
+  port: 5432
+  user: postgres
+  password: postgres
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -81,6 +85,6 @@ test:
 #
 production:
   <<: *default
-  database: cake_api_production
-  username: cake_api
+  database: cake_db
+  username: cake
   password: <%= ENV["CAKE_API_DATABASE_PASSWORD"] %>
